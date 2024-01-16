@@ -12,15 +12,12 @@ import './App.css';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import Unauthorized from './pages/Unauthorized/Unauthorized';
+import { useAuthContext } from './context/AuthContext';
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
-
-  
-
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
+  const {
+    isLoggedIn,
+  } = useAuthContext();
 
   const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
     const location = useLocation();
@@ -28,7 +25,11 @@ function App() {
     return isLoggedIn ? (
       React.cloneElement(element)
     ) : (
-      <Navigate to="/unauthorized" replace state={{ from: location }} />
+      <Navigate
+        to="/unauthorized"
+        replace
+        state={{ from: location }}
+      />
     );
   };
 
@@ -38,10 +39,7 @@ function App() {
         <Route 
           path="/login"
           element={
-            <Login 
-              onLogin={handleLogin}
-              isLoggedIn={isLoggedIn}
-            />}
+            <Login />}
           />
         <Route
           path="/home"

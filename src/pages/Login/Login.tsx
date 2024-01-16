@@ -1,52 +1,57 @@
+// src/components/Login.tsx
 import React, { useState } from 'react';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../../context/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
-interface LoginProperties {
-  onLogin: () => void
-  isLoggedIn: boolean
-}
+const Login: React.FC = () => {
+  const { isLoggedIn } = useAuthContext();
 
-const Login: React.FC<LoginProperties> = ({
-  onLogin,
-  isLoggedIn
-}) => {
+  const { handleLogin, handleLogout } = useAuth(isLoggedIn);
 
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [
+    credentials,
+    setCredentials
+  ] = useState({
+    username: '',
+    password: ''
+  });
 
-  const navigate = useNavigate();
+  useAuth(isLoggedIn);
 
-  const handleLogin = () => {
-    onLogin();
-    navigate('/home');
+  const handleLoginClick = () => {   
+    handleLogin(credentials.username, credentials.password);
   };
+
+  const handleLogoutClick = () => {
+    handleLogout();
+  };
+
 
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <p> {JSON.stringify(isLoggedIn)}</p>
-      <form>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+      <input
+        type="text"
+        placeholder="Username"
+        className="login-input"
+        value={credentials.username}
+        onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        className="login-input"
+        value={credentials.password}
+        onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+      />
+      <button className="login-button" onClick={handleLoginClick}>
+        Login
+      </button>
+      <button className="login-button" onClick={handleLogoutClick}>
+        Logout
+      </button>
+      <p>Is logged in: {isLoggedIn ? 'Yes' : 'No'}</p>
     </div>
   );
 };
