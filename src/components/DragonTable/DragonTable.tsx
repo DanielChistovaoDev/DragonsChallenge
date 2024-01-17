@@ -1,34 +1,46 @@
-// src/components/DragonTable.tsx
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './DragonTable.css';
 import { DragonsAPI } from '../../types/DragonsAPI';
+import ModalDetails from '../ModalDetails/ModalDetails';
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
-  onDetailsClick: (dragon: DragonsAPI) => void;
-  onEditClick: (dragon: DragonsAPI) => void;
 }
 
-const DragonTable: React.FC<DragonTableProps> = ({ dragons, onDetailsClick, onEditClick }) => {
+const DragonTable: React.FC<DragonTableProps> = ({ dragons }) => {
   const [sortedDragons, setSortedDragons] = useState([...dragons]);
 
-  const sortByAttribute = (attribute: keyof DragonsAPI) => {
-    const sorted = [...sortedDragons].sort((a, b) => {
-      const valueA = Array.isArray(a[attribute]) ? a[attribute][0] : a[attribute];
-      const valueB = Array.isArray(b[attribute]) ? b[attribute][0] : b[attribute];
+  const [
+    selectedDragonDetails,
+    setSelectedDragonDetails
+  ]  = useState<DragonsAPI | null>(null);
+
+  const [
+    selectedDragonEdition,
+    setSelectedDragonEdition
+  ]  = useState<DragonsAPI | null>(null);
+
+  const sortByName = useCallback(() => {
+    const sorted = [...dragons].sort((a, b) => {
+      const valueA = Array.isArray(a['name']) ? a['name'][0] : a['name'];
+      const valueB = Array.isArray(b['name']) ? b['name'][0] : b['name'];
 
       return valueA.toString().localeCompare(valueB.toString());
     });
 
     setSortedDragons(sorted);
-  };
+  }, [dragons]);
+
+  useEffect(() => {
+    sortByName();
+  }, [sortByName]);
 
   return (
     <>
       <table className="dragon-table">
         <thead>
           <tr>
-            <th onClick={() => sortByAttribute('name')}>Name</th>
+            <th>Name</th>
             <th>Type</th>
             <th>Created At</th>
             <th>Actions</th>
@@ -41,13 +53,29 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onDetailsClick, onEd
               <td>{dragon.type}</td>
               <td>{Array.isArray(dragon.createdAt) ? dragon.createdAt[0] : dragon.createdAt}</td>
               <td>
-                <button onClick={() => onDetailsClick(dragon)}>Details</button>
-                <button onClick={() => onEditClick(dragon)}>Edit</button>
+                <button
+                  onClick={() => setSelectedDragonDetails(dragon)}
+                >
+                  Details
+                </button>
+
+                <button
+                  onClick={() => setSelectedDragonEdition(dragon)}
+                >
+                  Edit
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <ModalDetails
+        dragon={selectedDragonDetails}
+        isOpen={!!selectedDragonDetails}
+        onClose={() => setSelectedDragonDetails(null)}
+      />
+
     </>
   );
 };

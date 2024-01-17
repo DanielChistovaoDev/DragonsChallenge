@@ -11,7 +11,7 @@ const Home: React.FC = () => {
       "name":"Iabaasdadad",
       "type":"Ice",
       "histories":["adasdasda"],
-      "id":"2"
+      "id":"1"
     },
     {
       "createdAt":"2024-01-16T18:43:11.561Z",
@@ -35,8 +35,6 @@ const Home: React.FC = () => {
       <p>Bem-vindo à sua página inicial!</p>
       <DragonTable
         dragons={dragonsMock}
-        onDetailsClick={ () => console.log('onDetailsClick') }
-        onEditClick={ () => console.log('onEditClick') }
       />
     </div>
   );
