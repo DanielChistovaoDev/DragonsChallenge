@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './DragonTable.css';
 import { DragonsAPI } from '../../types/DragonsAPI';
 import ModalDetails from '../ModalDetails/ModalDetails';
+import ModalEdition from '../ModalEdition/ModalEdition';
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
@@ -76,6 +77,12 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons }) => {
         onClose={() => setSelectedDragonDetails(null)}
       />
 
+      <ModalEdition
+        dragon={selectedDragonEdition}
+        isOpen={!!selectedDragonEdition}
+        onClose={() => setSelectedDragonEdition(null)}
+        onSave={(e) => console.log('onsave -->', e)}
+      />
     </>
   );
 };
