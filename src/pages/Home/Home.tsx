@@ -3,13 +3,19 @@ import React, { useEffect } from 'react';
 import './Home.css';
 import DragonTable from '../../components/DragonTable/DragonTable';
 import useDragons from '../../hooks/useDragons';
+import { DragonsAPI } from '../../types/DragonsAPI';
 
 const Home: React.FC = () => {
-  const { dragons, loading, error, getDragons } = useDragons();
+  const { dragons, loading, error, getDragons, editDragon } = useDragons();
 
   useEffect(() => {
     getDragons();
   }, []);
+
+  const onSaveEdition = (editedDragon: DragonsAPI) => {
+    const { id } = editedDragon;
+    editDragon(id, editedDragon);
+  };
 
   return (
     <div className="home-container">
@@ -20,7 +26,10 @@ const Home: React.FC = () => {
       ) : error ? (
         <p>Erro ao carregar dragões: {error.message}</p>
       ) : (
-        <DragonTable dragons={dragons} />
+        <DragonTable
+          dragons={dragons}
+          onSaveEdition={onSaveEdition}
+        />
       )}
     </div>
   );

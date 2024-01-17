@@ -6,9 +6,10 @@ import ModalEdition from '../ModalEdition/ModalEdition';
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
+  onSaveEdition: (editedDragon: DragonsAPI) => void;
 }
 
-const DragonTable: React.FC<DragonTableProps> = ({ dragons }) => {
+const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => {
   const [sortedDragons, setSortedDragons] = useState([...dragons]);
 
   const [
@@ -81,7 +82,7 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons }) => {
         dragon={selectedDragonEdition}
         isOpen={!!selectedDragonEdition}
         onClose={() => setSelectedDragonEdition(null)}
-        onSave={(e) => console.log('onsave -->', e)}
+        onSave={(e) => onSaveEdition(e)}
       />
     </>
   );
