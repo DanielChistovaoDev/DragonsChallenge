@@ -82,7 +82,7 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
               <td>{dragon.type}</td>
               <td>{formatDateString(dragon.createdAt)}</td>
 
-              <td>
+              <td className='dragon-table--actions'>
                 <Button
                   label='Details'
                   onClick={() => setSelectedDragonDetails(dragon)}

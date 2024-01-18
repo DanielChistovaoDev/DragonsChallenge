@@ -25,3 +25,8 @@
   color: #ffffff;
   font-weight: bold;
 }
+
+.dragon-table--actions {
+  display: flex;
+  justify-content: space-evenly;
+}
