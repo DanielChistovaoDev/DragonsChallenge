@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
 import useAuth from '../../hooks/useAuth';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/store/store';
 
 const Login: React.FC = () => {
   const { handleLogin, handleLogout } = useAuth();
@@ -48,7 +46,6 @@ const Login: React.FC = () => {
         <button className="login-button" onClick={handleLogoutClick}>
           Logout
         </button>
-        <p>Is logged in: {'No'}</p>
       </div>
     </div>
   );
