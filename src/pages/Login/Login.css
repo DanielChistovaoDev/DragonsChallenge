@@ -1,5 +1,15 @@
-/* src/components/Login.css */
-.login-container {
+/* styles.css */
+
+/* Estilos comuns para todos os tamanhos de tela */
+.login-background-container {
+  background: url('../../assets/img/login_background.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/login_background.jpg') center/cover no-repeat;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.login-container-wrapper {
   width: 300px;
   margin: auto;
   margin-top: 100px;
@@ -11,7 +21,7 @@
   text-align: center;
 }
 
-.login-container h2 {
+.login-title {
   color: #4285f4;
 }
 
@@ -26,6 +36,7 @@
 .login-button {
   width: 100%;
   padding: 10px;
+  font-size: 16px;
   background-color: #4285f4;
   color: #fff;
   border: none;
@@ -35,4 +46,23 @@
 
 .login-button:hover {
   background-color: #0056b3;
+}
+
+/* Estilos para dispositivos de largura até 768px (tamanho de tablet) */
+@media (max-width: 768px) {
+  .login-container-wrapper {
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+
+/* Estilos para dispositivos de largura até 480px (tamanho de celular) */
+@media (max-width: 480px) {
+  .login-container-wrapper {
+    padding: 10px;
+  }
+
+  .login-button {
+    font-size: 14px;
+  }
 }
