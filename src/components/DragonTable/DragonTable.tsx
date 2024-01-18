@@ -37,6 +37,48 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
     sortByName();
   }, [sortByName]);
 
+  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentDragons = dragons.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(dragons.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+      Previous
+    </button>
+
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <button key={i} onClick={() => handlePageChange(i)}>
+          {i}
+        </button>
+      );
+    }
+
+    return pageNumbers;
+  };
+
   return (
     <>
       <table className="dragon-table">
@@ -49,28 +91,30 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
           </tr>
         </thead>
         <tbody>
-          {sortedDragons.map((dragon) => (
+          {currentDragons.map((dragon) => (
             <tr key={dragon.id}>
               <td>{dragon.name}</td>
               <td>{dragon.type}</td>
               <td>{Array.isArray(dragon.createdAt) ? dragon.createdAt[0] : dragon.createdAt}</td>
               <td>
-                <button
-                  onClick={() => setSelectedDragonDetails(dragon)}
-                >
-                  Details
-                </button>
-
-                <button
-                  onClick={() => setSelectedDragonEdition(dragon)}
-                >
-                  Edit
-                </button>
+                <button onClick={() => setSelectedDragonDetails(dragon)}>Details</button>
+                <button onClick={() => setSelectedDragonEdition(dragon)}>Edit</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {/* controles de paginação com botões de número de página */}
+      <div>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        {renderPageNumbers()}
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
 
       <ModalDetails
         dragon={selectedDragonDetails}
