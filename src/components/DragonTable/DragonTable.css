@@ -3,16 +3,15 @@
   max-width: 900px;
   border-collapse: collapse;
   margin-top: 20px;
-  background-image: url('../../assets/img/table_background.jpg');
+  background-image: url("../../assets/img/table_background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .dragon-table th {
-  
   background-color: var(--accent-color);
   color: var(--primary-color);
   padding: 8px;

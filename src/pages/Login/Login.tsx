@@ -1,27 +1,20 @@
-import React, { useState } from 'react';
-import './Login.css';
-import useAuth from '../../hooks/useAuth';
-import ErrorLabel from '../../components/ErrorLabel/ErrorLabel';
-import Button from '../../components/Button/Button';
+import React, { useState } from "react";
+import "./Login.css";
+import useAuth from "../../hooks/useAuth";
+import ErrorLabel from "../../components/ErrorLabel/ErrorLabel";
+import Button from "../../components/Button/Button";
 
 const Login: React.FC = () => {
-  const { 
-    errorMessage,
-    handleLogin,
-  } = useAuth();
+  const { errorMessage, handleLogin } = useAuth();
 
-  const [
-    credentials,
-    setCredentials
-  ] = useState({
-    username: '',
-    password: ''
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
   });
 
-  const handleLoginClick = () => {   
+  const handleLoginClick = () => {
     handleLogin(credentials.username, credentials.password);
   };
-
 
   return (
     <div className="login-background-container">
@@ -32,21 +25,22 @@ const Login: React.FC = () => {
           placeholder="Username"
           className="login-input"
           value={credentials.username}
-          onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+          onChange={(e) =>
+            setCredentials({ ...credentials, username: e.target.value })
+          }
         />
         <input
           type="password"
           placeholder="Password"
           className="login-input"
           value={credentials.password}
-          onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+          onChange={(e) =>
+            setCredentials({ ...credentials, password: e.target.value })
+          }
         />
 
         <div className="login-button">
-          <Button
-            label='Sign In'
-            onClick={handleLoginClick}
-          />
+          <Button label="Sign In" onClick={handleLoginClick} />
         </div>
 
         <ErrorLabel errorMessage={errorMessage} />

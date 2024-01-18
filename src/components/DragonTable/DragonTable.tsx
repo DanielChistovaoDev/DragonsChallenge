@@ -1,26 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import './DragonTable.css';
-import { DragonsAPI } from '../../types/DragonsAPI';
-import ModalDetails from '../ModalDetails/ModalDetails';
-import ModalEdition from '../ModalEdition/ModalEdition';
-import { formatDateString } from '../../utils/formatDateString';
-import Button from '../Button/Button';
+import React, { useCallback, useEffect, useState } from "react";
+import "./DragonTable.css";
+import { DragonsAPI } from "../../types/DragonsAPI";
+import ModalDetails from "../ModalDetails/ModalDetails";
+import ModalEdition from "../ModalEdition/ModalEdition";
+import { formatDateString } from "../../utils/formatDateString";
+import Button from "../Button/Button";
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
   onSaveEdition: (editedDragon: DragonsAPI) => void;
 }
 
-const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => {
-  const [
-    selectedDragonDetails,
-    setSelectedDragonDetails
-  ]  = useState<DragonsAPI | null>(null);
+const DragonTable: React.FC<DragonTableProps> = ({
+  dragons,
+  onSaveEdition,
+}) => {
+  const [selectedDragonDetails, setSelectedDragonDetails] =
+    useState<DragonsAPI | null>(null);
 
-  const [
-    selectedDragonEdition,
-    setSelectedDragonEdition
-  ]  = useState<DragonsAPI | null>(null);
+  const [selectedDragonEdition, setSelectedDragonEdition] =
+    useState<DragonsAPI | null>(null);
 
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -51,13 +50,12 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
     const pageNumbers = [];
 
     for (let i = 1; i <= totalPages; i++) {
-
       pageNumbers.push(
-          <Button
-            key={i}
-            label={String(i)}
-            onClick={() => handlePageChange(i)}
-          />
+        <Button
+          key={i}
+          label={String(i)}
+          onClick={() => handlePageChange(i)}
+        />,
       );
     }
 
@@ -82,20 +80,17 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
               <td>{dragon.type}</td>
               <td>{formatDateString(dragon.createdAt)}</td>
 
-              <td className='dragon-table--actions'>
+              <td className="dragon-table--actions">
                 <Button
-                  label='Details'
+                  label="Details"
                   onClick={() => setSelectedDragonDetails(dragon)}
                 />
 
-
                 <Button
-                  label='Edit'
+                  label="Edit"
                   onClick={() => setSelectedDragonEdition(dragon)}
                 />
-
               </td>
-
             </tr>
           ))}
         </tbody>
@@ -104,20 +99,18 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
       {/* controles de paginação com botões de número de página */}
       <div>
         <Button
-          label='Previous'
+          label="Previous"
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
         />
-        
 
         {renderPageNumbers()}
 
         <Button
-          label='Next'
+          label="Next"
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         />
-          
       </div>
 
       <ModalDetails

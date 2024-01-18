@@ -1,15 +1,14 @@
 // src/pages/Home.tsx
-import React, { useEffect } from 'react';
-import './Home.css';
-import DragonTable from '../../components/DragonTable/DragonTable';
-import useDragons from '../../hooks/useDragons';
-import { DragonsAPI } from '../../types/DragonsAPI';
-import Loader from '../../components/Loader/Loader';
-import { sortAlphabetically } from '../../utils/sortAlphabetically';
+import React, { useEffect } from "react";
+import "./Home.css";
+import DragonTable from "../../components/DragonTable/DragonTable";
+import useDragons from "../../hooks/useDragons";
+import { DragonsAPI } from "../../types/DragonsAPI";
+import Loader from "../../components/Loader/Loader";
+import { sortAlphabetically } from "../../utils/sortAlphabetically";
 
 const Home: React.FC = () => {
   const { dragons, loading, error, getDragons, editDragon } = useDragons();
-
 
   useEffect(() => {
     getDragons();
@@ -21,8 +20,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className='background-container'>
-
+    <div className="background-container">
       <div className="home-container">
         {loading ? (
           <Loader />
@@ -30,7 +28,7 @@ const Home: React.FC = () => {
           <p>Erro ao carregar dragões: {error.message}</p>
         ) : (
           <DragonTable
-            dragons={sortAlphabetically(dragons, 'name')}
+            dragons={sortAlphabetically(dragons, "name")}
             onSaveEdition={onSaveEdition}
           />
         )}

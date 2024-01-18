@@ -1,14 +1,13 @@
-import React from 'react';
-import NavBar from '../NavBar/NavBar';
-import useAuth from '../../hooks/useAuth';
-
+import React from "react";
+import NavBar from "../NavBar/NavBar";
+import useAuth from "../../hooks/useAuth";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-const { handleLogout } =  useAuth();
+  const { handleLogout } = useAuth();
 
   return (
     <div>

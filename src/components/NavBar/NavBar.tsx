@@ -1,6 +1,6 @@
-import React from 'react';
-import './NavBar.css';
-import Button from '../Button/Button';
+import React from "react";
+import "./NavBar.css";
+import Button from "../Button/Button";
 
 interface NavBarProps {
   onLogout: () => void;
@@ -9,11 +9,7 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ onLogout }) => {
   return (
     <div className="barra-superior">
-
-        <Button
-            label='Logout'
-            onClick={onLogout}
-        />
+      <Button label="Logout" onClick={onLogout} />
     </div>
   );
 };

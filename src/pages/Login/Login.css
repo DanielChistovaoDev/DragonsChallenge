@@ -1,6 +1,9 @@
 .login-background-container {
-  background: url('../../assets/img/login_background.jpg') center/cover no-repeat;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/login_background.jpg') center/cover no-repeat;
+  background: url("../../assets/img/login_background.jpg") center/cover
+    no-repeat;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/img/login_background.jpg") center/cover no-repeat;
   height: 100vh;
   text-align: center;
   padding: 20px;
@@ -17,7 +20,7 @@
   background-color: #fff;
   text-align: center;
 
-  background-image: url('../../assets/img/table_background.jpg');
+  background-image: url("../../assets/img/table_background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -34,7 +37,6 @@
   border: 1px solid #ccc;
   border-radius: 3px;
 }
-
 
 /* Estilos para dispositivos de largura até 768px (tamanho de tablet) */
 @media (max-width: 768px) {

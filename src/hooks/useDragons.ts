@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { DragonsAPI } from '../types/DragonsAPI';
-import DragonsService from '../services/DragonsService';
+import { useState, useEffect } from "react";
+import { DragonsAPI } from "../types/DragonsAPI";
+import DragonsService from "../services/DragonsService";
 
 interface DragonsHook {
   dragons: DragonsAPI[];

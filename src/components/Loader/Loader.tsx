@@ -1,9 +1,9 @@
-import React from 'react';
-import './Loader.css';
+import React from "react";
+import "./Loader.css";
 
 const Loader: React.FC = () => {
   return (
-    <div className='fire-background'>
+    <div className="fire-background">
       <div className="fire">
         <div className="fire-left">
           <div className="main-fire"></div>
