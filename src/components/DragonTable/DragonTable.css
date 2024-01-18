@@ -25,21 +25,3 @@
   color: #ffffff;
   font-weight: bold;
 }
-
-.dragon-table--buttons {
-  background-color: #9d4e28;
-  padding: 5px;
-  color: yellow;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-.dragon-table--buttons:disabled {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-}
-
-.dragon-table--buttons:focus {
-  text-decoration: underline;
-}
