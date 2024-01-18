@@ -1,5 +1,5 @@
-import { Reducer, Action } from 'redux';
-import { LOGIN, LOGOUT, LoginAction, LogoutAction } from '../actions/authActions';
+import { createReducer } from '@reduxjs/toolkit';
+import { login, logout } from '../actions/authActions';
 
 export interface AuthState {
   isLoggedIn: boolean;
@@ -7,26 +7,29 @@ export interface AuthState {
   password: string;
 }
 
-const initialState: AuthState = {
+const storedAuth = localStorage.getItem('auth');
+
+const initialState: AuthState = storedAuth ? JSON.parse(storedAuth) : {
   isLoggedIn: false,
   username: '',
   password: '',
 };
 
-const authReducer: Reducer<AuthState, Action<string>> = (state = initialState, action) => {
-  switch (action.type) {
-    case LOGIN:
-      return {
-        ...state,
-        isLoggedIn: true,
-        username: (action as LoginAction).payload.username,
-        password: (action as LoginAction).payload.password,
-      };
-    case LOGOUT:
-      return initialState;
-    default:
-      return state;
-  }
-};
+
+const authReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(login, (state, action) => {
+      state.isLoggedIn = true;
+      state.username = action.payload.username;
+      state.password = action.payload.password;
+      localStorage.setItem('auth', JSON.stringify(state));
+    })
+    .addCase(logout, (state) => {
+      state.isLoggedIn = false;
+      state.username = '';
+      state.password = '';
+      localStorage.removeItem('auth');
+    });
+});
 
 export default authReducer;

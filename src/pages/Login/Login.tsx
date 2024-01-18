@@ -1,13 +1,16 @@
 // src/components/Login.tsx
 import React, { useState } from 'react';
 import './Login.css';
-import { useAuthContext } from '../../context/AuthContext';
 import useAuth from '../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/store';
 
 const Login: React.FC = () => {
-  const { isLoggedIn } = useAuthContext();
+  const auth = useSelector((state: RootState) => state.auth);
 
-  const { handleLogin, handleLogout } = useAuth(isLoggedIn);
+  const { isLoggedIn } = auth;
+
+  const { handleLogin, handleLogout } = useAuth();
 
   const [
     credentials,
@@ -16,8 +19,6 @@ const Login: React.FC = () => {
     username: '',
     password: ''
   });
-
-  useAuth(isLoggedIn);
 
   const handleLoginClick = () => {   
     handleLogin(credentials.username, credentials.password);

@@ -1,6 +1,10 @@
 // store.ts
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../reducers/authReducer';
+import authReducer, { AuthState } from '../reducers/authReducer';
+
+export interface RootState {
+  auth: AuthState;
+}
 
 const store = configureStore({
   reducer: {
