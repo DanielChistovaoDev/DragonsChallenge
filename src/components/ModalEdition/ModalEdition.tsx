@@ -1,6 +1,8 @@
-// src/components/Modal/ModalEdition.tsx
 import React from 'react';
+import './ModalEdition.css';
 import { DragonsAPI } from '../../types/DragonsAPI';
+import Button from '../Button/Button';
+import { formatDateString } from '../../utils/formatDateString';
 
 interface ModalEditionProps {
   isOpen: boolean;
@@ -13,7 +15,7 @@ const ModalEdition: React.FC<ModalEditionProps> = ({ isOpen, onClose, dragon, on
   const [editedDragon, setEditedDragon] = React.useState<DragonsAPI | null>(null);
 
   React.useEffect(() => {
-    setEditedDragon(dragon); // Inicializa o estado editedDragon quando a prop dragon é alterada
+    setEditedDragon(dragon);
   }, [dragon]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,9 +39,9 @@ const ModalEdition: React.FC<ModalEditionProps> = ({ isOpen, onClose, dragon, on
       {isOpen && (
         <div className="modal-overlay" onClick={onClose}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button onClick={onClose}>Close</button>
+
             {editedDragon && (
-              <div>
+              <div className='form'>
                 <h2>Edit</h2>
                 <label>
                   Name:
@@ -61,14 +63,20 @@ const ModalEdition: React.FC<ModalEditionProps> = ({ isOpen, onClose, dragon, on
                 </label>
                 <label>
                   Created At:
-                  <input
-                    type="text"
-                    name="createdAt"
-                    value={editedDragon.createdAt}
-                    onChange={handleInputChange}
-                  />
+                  {formatDateString(editedDragon.createdAt)}
                 </label>
-                <button onClick={handleSave}>Save</button>
+
+                <div className='actions'>
+                  <Button
+                    label='Save'
+                    onClick={handleSave}
+                  />
+
+                  <Button
+                    label='Close'
+                    onClick={onClose}
+                  />
+                </div>
               </div>
             )}
           </div>
