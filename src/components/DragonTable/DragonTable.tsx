@@ -9,12 +9,14 @@ import ModalRegister from "../ModalRegister/ModalRegister";
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
+  onUpdate: () => void;
   onSaveEdition: (editedDragon: DragonsAPI) => void;
   onSaveRegister: (createdDragon: DragonsAPI) => void;
 }
 
 const DragonTable: React.FC<DragonTableProps> = ({
   dragons,
+  onUpdate,
   onSaveEdition,
   onSaveRegister
 }) => {
@@ -70,6 +72,11 @@ const DragonTable: React.FC<DragonTableProps> = ({
   return (
     <>
       <div className="table-top--actions">
+        <Button
+          label='Update'
+          onClick={() => onUpdate()}
+        />
+
         <Button
           label='New Dragon'
           onClick={() => setIsOpenRegisterModal(true)}

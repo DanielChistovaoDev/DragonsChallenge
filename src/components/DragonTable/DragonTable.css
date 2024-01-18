@@ -31,6 +31,12 @@
   justify-content: space-evenly;
 }
 
+.table-top--actions{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
 /* modo responsivo */
 
 @media screen and (max-width: 600px) {

@@ -34,6 +34,7 @@ const Home: React.FC = () => {
         ) : (
           <DragonTable
             dragons={sortAlphabetically(dragons, "name")}
+            onUpdate={getDragons}
             onSaveEdition={onSaveEdition}
             onSaveRegister={onSaveRegister}
           />

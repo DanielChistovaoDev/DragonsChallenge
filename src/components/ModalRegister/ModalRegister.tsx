@@ -49,7 +49,7 @@ const ModalRegister: React.FC<ModalEditionProps> = ({
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             {createdDragon && (
               <div className="form">
-                <h2>Edit</h2>
+                <h2>Register</h2>
                 <label>
                   Name:
                   <input
