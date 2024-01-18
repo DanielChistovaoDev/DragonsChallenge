@@ -6,9 +6,10 @@ import useDragons from "../../hooks/useDragons";
 import { DragonsAPI } from "../../types/DragonsAPI";
 import Loader from "../../components/Loader/Loader";
 import { sortAlphabetically } from "../../utils/sortAlphabetically";
+import ErrorLabel from "../../components/ErrorLabel/ErrorLabel";
 
 const Home: React.FC = () => {
-  const { dragons, loading, error, getDragons, editDragon } = useDragons();
+  const { dragons, loading, error, getDragons, editDragon, createDragon } = useDragons();
 
   useEffect(() => {
     getDragons();
@@ -19,17 +20,22 @@ const Home: React.FC = () => {
     editDragon(id, editedDragon);
   };
 
+  const onSaveRegister = (createdDragon: DragonsAPI) => {
+    createDragon(createdDragon);
+  };
+
   return (
     <div className="background-container">
       <div className="home-container">
         {loading ? (
           <Loader />
         ) : error ? (
-          <p>Erro ao carregar dragões: {error.message}</p>
+          <ErrorLabel errorMessage="Erro ao carregar dragões"/>
         ) : (
           <DragonTable
             dragons={sortAlphabetically(dragons, "name")}
             onSaveEdition={onSaveEdition}
+            onSaveRegister={onSaveRegister}
           />
         )}
       </div>

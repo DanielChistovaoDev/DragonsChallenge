@@ -2,7 +2,7 @@ import React from "react";
 import "./ModalEdition.css";
 import { DragonsAPI } from "../../types/DragonsAPI";
 import Button from "../Button/Button";
-import { formatDateString } from "../../utils/formatDateString";
+import { formatDateString } from "../../utils/date";
 
 interface ModalEditionProps {
   isOpen: boolean;

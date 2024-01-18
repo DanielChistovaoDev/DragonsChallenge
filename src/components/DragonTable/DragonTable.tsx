@@ -3,23 +3,28 @@ import "./DragonTable.css";
 import { DragonsAPI } from "../../types/DragonsAPI";
 import ModalDetails from "../ModalDetails/ModalDetails";
 import ModalEdition from "../ModalEdition/ModalEdition";
-import { formatDateString } from "../../utils/formatDateString";
+import { formatDateString } from "../../utils/date";
 import Button from "../Button/Button";
+import ModalRegister from "../ModalRegister/ModalRegister";
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
   onSaveEdition: (editedDragon: DragonsAPI) => void;
+  onSaveRegister: (createdDragon: DragonsAPI) => void;
 }
 
 const DragonTable: React.FC<DragonTableProps> = ({
   dragons,
   onSaveEdition,
+  onSaveRegister
 }) => {
   const [selectedDragonDetails, setSelectedDragonDetails] =
     useState<DragonsAPI | null>(null);
 
   const [selectedDragonEdition, setSelectedDragonEdition] =
     useState<DragonsAPI | null>(null);
+
+  const [isOpenRegisterModal, setIsOpenRegisterModal] = useState(false);
 
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,6 +69,13 @@ const DragonTable: React.FC<DragonTableProps> = ({
 
   return (
     <>
+      <div className="table-top--actions">
+        <Button
+          label='New Dragon'
+          onClick={() => setIsOpenRegisterModal(true)}
+        />
+      </div>
+
       <table className="dragon-table">
         <thead>
           <tr>
@@ -124,6 +136,12 @@ const DragonTable: React.FC<DragonTableProps> = ({
         isOpen={!!selectedDragonEdition}
         onClose={() => setSelectedDragonEdition(null)}
         onSave={(e) => onSaveEdition(e)}
+      />
+
+      <ModalRegister
+        isOpen={isOpenRegisterModal}
+        onClose={() => setIsOpenRegisterModal(false)}
+        onSave={(e) => onSaveRegister(e)}
       />
     </>
   );
