@@ -1,6 +1,8 @@
 import React from 'react';
 import './ModalDetails.css';
 import { DragonsAPI } from '../../types/DragonsAPI';
+import Button from '../Button/Button';
+import { formatDateString } from '../../utils/formatDateString';
 
 interface ModalProps {
   isOpen: boolean;
@@ -28,15 +30,15 @@ const ModalDetails: React.FC<ModalProps> = (
           <h2>Detalhes</h2>
           <p>Nome: {dragon.name}</p>
           <p>Tipo: {dragon.type}</p>
-          <p>Data de criação: {dragon.createdAt}</p>
+          <p>Data de criação: {formatDateString(dragon.createdAt)}</p>
           <p>Histórias: {dragon.histories.length}</p>
         </div>
 
-        <button
+        <Button
+          label='Close'
           onClick={onClose}
-        >
-          Close
-        </button>
+        />
+
         {children}
       </div>
     </div>
