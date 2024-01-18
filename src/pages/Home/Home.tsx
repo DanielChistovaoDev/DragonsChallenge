@@ -5,6 +5,7 @@ import DragonTable from '../../components/DragonTable/DragonTable';
 import useDragons from '../../hooks/useDragons';
 import { DragonsAPI } from '../../types/DragonsAPI';
 import Loader from '../../components/Loader/Loader';
+import { sortAlphabetically } from '../../utils/sortAlphabetically';
 
 const Home: React.FC = () => {
   const { dragons, loading, error, getDragons, editDragon } = useDragons();
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
           <p>Erro ao carregar dragões: {error.message}</p>
         ) : (
           <DragonTable
-            dragons={dragons}
+            dragons={sortAlphabetically(dragons, 'name')}
             onSaveEdition={onSaveEdition}
           />
         )}
