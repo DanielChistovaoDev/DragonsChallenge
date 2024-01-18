@@ -29,3 +29,15 @@
     font-weight: bold;
   }
 }
+
+/* modo responsivo */
+
+@media screen and (max-width: 600px) {
+  .modal-content {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+  }
+}

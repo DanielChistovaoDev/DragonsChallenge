@@ -83,6 +83,18 @@ body {
   margin-right: auto;
 }
 
+/* modo responsivo */
+
+@media screen and (max-width: 600px) {
+  .fire {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+  }
+}
+
 .fire-center {
   position: absolute;
   height: 100%;
