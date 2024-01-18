@@ -1,6 +1,3 @@
-/* styles.css */
-
-/* Estilos comuns para todos os tamanhos de tela */
 .login-background-container {
   background: url('../../assets/img/login_background.jpg') center/cover no-repeat;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/img/login_background.jpg') center/cover no-repeat;
@@ -26,7 +23,7 @@
 }
 
 .login-input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
@@ -34,8 +31,9 @@
 }
 
 .login-button {
-  width: 100%;
+  width: 80%;
   padding: 10px;
+  margin: 20px;
   font-size: 16px;
   background-color: #4285f4;
   color: #fff;
@@ -51,7 +49,6 @@
 /* Estilos para dispositivos de largura até 768px (tamanho de tablet) */
 @media (max-width: 768px) {
   .login-container-wrapper {
-    width: 100%;
     margin-top: 50px;
   }
 }
@@ -59,7 +56,7 @@
 /* Estilos para dispositivos de largura até 480px (tamanho de celular) */
 @media (max-width: 480px) {
   .login-container-wrapper {
-    padding: 10px;
+    padding: 0px;
   }
 
   .login-button {

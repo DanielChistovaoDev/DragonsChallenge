@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import './Login.css';
 import useAuth from '../../hooks/useAuth';
+import ErrorLabel from '../../components/ErrorLabel/ErrorLabel';
 
 const Login: React.FC = () => {
-  const { handleLogin, handleLogout } = useAuth();
+  const { 
+    errorMessage,
+    handleLogin,
+  } = useAuth();
 
   const [
     credentials,
@@ -15,10 +19,6 @@ const Login: React.FC = () => {
 
   const handleLoginClick = () => {   
     handleLogin(credentials.username, credentials.password);
-  };
-
-  const handleLogoutClick = () => {
-    handleLogout();
   };
 
 
@@ -43,9 +43,8 @@ const Login: React.FC = () => {
         <button className="login-button" onClick={handleLoginClick}>
           Login
         </button>
-        <button className="login-button" onClick={handleLogoutClick}>
-          Logout
-        </button>
+
+        <ErrorLabel errorMessage={errorMessage} />
       </div>
     </div>
   );
