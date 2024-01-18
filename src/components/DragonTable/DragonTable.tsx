@@ -3,6 +3,7 @@ import './DragonTable.css';
 import { DragonsAPI } from '../../types/DragonsAPI';
 import ModalDetails from '../ModalDetails/ModalDetails';
 import ModalEdition from '../ModalEdition/ModalEdition';
+import { formatDateString } from '../../utils/formatDateString';
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
@@ -97,7 +98,7 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
             <tr key={dragon.id}>
               <td>{dragon.name}</td>
               <td>{dragon.type}</td>
-              <td>{Array.isArray(dragon.createdAt) ? dragon.createdAt[0] : dragon.createdAt}</td>
+              <td>{formatDateString(dragon.createdAt)}</td>
 
               <td>
                 <button
