@@ -4,6 +4,7 @@ import './Home.css';
 import DragonTable from '../../components/DragonTable/DragonTable';
 import useDragons from '../../hooks/useDragons';
 import { DragonsAPI } from '../../types/DragonsAPI';
+import Loader from '../../components/Loader/Loader';
 
 const Home: React.FC = () => {
   const { dragons, loading, error, getDragons, editDragon } = useDragons();
@@ -18,19 +19,19 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="home-container">
-      <h2>Página Inicial</h2>
-      <p>Bem-vindo à sua página inicial!</p>
-      {loading ? (
-        <p>Carregando dragões...</p>
-      ) : error ? (
-        <p>Erro ao carregar dragões: {error.message}</p>
-      ) : (
-        <DragonTable
-          dragons={dragons}
-          onSaveEdition={onSaveEdition}
-        />
-      )}
+    <div className='background-container'>
+      <div className="home-container">
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <p>Erro ao carregar dragões: {error.message}</p>
+        ) : (
+          <DragonTable
+            dragons={dragons}
+            onSaveEdition={onSaveEdition}
+          />
+        )}
+      </div>
     </div>
   );
 };

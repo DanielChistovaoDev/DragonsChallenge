@@ -2,15 +2,44 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-image: url('../../assets/img/table_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden; 
 }
 
 .dragon-table th {
-  background-color: #f2f2f2;
+  
+  background-color: #4f3014;
+  color: #cfa900;
   padding: 8px;
   text-align: left;
+  border-radius: 10px;
 }
 
 .dragon-table td {
-  border: 1px solid #ddd;
   padding: 8px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.dragon-table--buttons {
+  background-color: #9d4e28;
+  padding: 5px;
+  color: yellow;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.dragon-table--buttons:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.dragon-table--buttons:focus {
+  text-decoration: underline;
 }

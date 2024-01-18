@@ -64,13 +64,15 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-      Previous
-    </button>
 
     for (let i = 1; i <= totalPages; i++) {
+
       pageNumbers.push(
-        <button key={i} onClick={() => handlePageChange(i)}>
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className='dragon-table--buttons'
+        >
           {i}
         </button>
       );
@@ -96,10 +98,23 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
               <td>{dragon.name}</td>
               <td>{dragon.type}</td>
               <td>{Array.isArray(dragon.createdAt) ? dragon.createdAt[0] : dragon.createdAt}</td>
+
               <td>
-                <button onClick={() => setSelectedDragonDetails(dragon)}>Details</button>
-                <button onClick={() => setSelectedDragonEdition(dragon)}>Edit</button>
+                <button
+                  onClick={() => setSelectedDragonDetails(dragon)}
+                  className='dragon-table--buttons'
+                >
+                  Details
+                </button>
+
+                <button
+                  onClick={() => setSelectedDragonEdition(dragon)}
+                  className='dragon-table--buttons'
+                >
+                  Edit
+                </button>
               </td>
+
             </tr>
           ))}
         </tbody>
@@ -107,12 +122,22 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
 
       {/* controles de paginação com botões de número de página */}
       <div>
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className='dragon-table--buttons'
+        >
+        Anterior
         </button>
+
         {renderPageNumbers()}
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
+
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className='dragon-table--buttons'
+        >
+          Próxima
         </button>
       </div>
 
