@@ -104,7 +104,7 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
       {/* controles de paginação com botões de número de página */}
       <div>
         <Button
-          label='Anterior'
+          label='Previous'
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
         />
@@ -113,7 +113,7 @@ const DragonTable: React.FC<DragonTableProps> = ({ dragons, onSaveEdition }) => 
         {renderPageNumbers()}
 
         <Button
-          label='Próxima'
+          label='Next'
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         />

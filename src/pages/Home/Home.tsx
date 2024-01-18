@@ -10,6 +10,7 @@ import { sortAlphabetically } from '../../utils/sortAlphabetically';
 const Home: React.FC = () => {
   const { dragons, loading, error, getDragons, editDragon } = useDragons();
 
+
   useEffect(() => {
     getDragons();
   }, []);
@@ -21,6 +22,7 @@ const Home: React.FC = () => {
 
   return (
     <div className='background-container'>
+
       <div className="home-container">
         {loading ? (
           <Loader />

@@ -1,5 +1,6 @@
 .dragon-table {
   width: 100%;
+  max-width: 900px;
   border-collapse: collapse;
   margin-top: 20px;
   background-image: url('../../assets/img/table_background.jpg');
@@ -29,4 +30,17 @@
 .dragon-table--actions {
   display: flex;
   justify-content: space-evenly;
+}
+
+/* modo responsivo */
+
+@media screen and (max-width: 600px) {
+  .dragon-table--actions {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin: 10px;
+    }
+  }
 }

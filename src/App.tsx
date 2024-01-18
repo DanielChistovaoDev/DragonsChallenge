@@ -12,6 +12,8 @@ import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import { useSelector } from 'react-redux';
 import { RootState } from './redux/store/store';
+import Layout from './components/Layout/Layout';
+import useAuth from './hooks/useAuth';
 
 function App() {
   const auth = useSelector((state: RootState) => state.auth);
@@ -20,6 +22,8 @@ function App() {
 
   const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
     const location = useLocation();
+
+    const { handleLogout } = useAuth();
 
     return isLoggedIn ? (
       React.cloneElement(element)
@@ -42,7 +46,15 @@ function App() {
           />
         <Route
           path="/home"
-          element={<PrivateRoute element={<Home />} />}
+          element={
+            <PrivateRoute 
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              } 
+            />
+          }
         />
         <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
