@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import useAuth from '../../hooks/useAuth';
 import ErrorLabel from '../../components/ErrorLabel/ErrorLabel';
+import Button from '../../components/Button/Button';
 
 const Login: React.FC = () => {
   const { 
@@ -40,9 +41,13 @@ const Login: React.FC = () => {
           value={credentials.password}
           onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
         />
-        <button className="login-button" onClick={handleLoginClick}>
-          Login
-        </button>
+
+        <div className="login-button">
+          <Button
+            label='Sign In'
+            onClick={handleLoginClick}
+          />
+        </div>
 
         <ErrorLabel errorMessage={errorMessage} />
       </div>

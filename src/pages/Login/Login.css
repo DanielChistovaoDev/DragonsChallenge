@@ -16,10 +16,15 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   text-align: center;
+
+  background-image: url('../../assets/img/table_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .login-title {
-  color: #4285f4;
+  color: var(--primary-color);
 }
 
 .login-input {
@@ -30,21 +35,6 @@
   border-radius: 3px;
 }
 
-.login-button {
-  width: 80%;
-  padding: 10px;
-  margin: 20px;
-  font-size: 16px;
-  background-color: #4285f4;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
-}
 
 /* Estilos para dispositivos de largura até 768px (tamanho de tablet) */
 @media (max-width: 768px) {

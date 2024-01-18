@@ -12,8 +12,8 @@
 
 .dragon-table th {
   
-  background-color: #4f3014;
-  color: #cfa900;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
   padding: 8px;
   text-align: left;
   border-radius: 10px;
