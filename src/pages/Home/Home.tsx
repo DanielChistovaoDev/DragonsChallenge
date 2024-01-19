@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // src/pages/Home.tsx
 import React, { useEffect } from "react";
 import "./Home.css";
@@ -9,7 +10,15 @@ import { sortAlphabetically } from "../../utils/sortAlphabetically";
 import ErrorLabel from "../../components/ErrorLabel/ErrorLabel";
 
 const Home: React.FC = () => {
-  const { dragons, loading, error, getDragons, editDragon, createDragon } = useDragons();
+  const {
+    dragons,
+    loading,
+    error,
+    getDragons,
+    editDragon,
+    createDragon,
+    deleteDragon
+  } = useDragons();
 
   useEffect(() => {
     getDragons();
@@ -22,6 +31,10 @@ const Home: React.FC = () => {
 
   const onSaveRegister = (createdDragon: DragonsAPI) => {
     createDragon(createdDragon);
+  };
+
+  const onSaveDelete = (deletedDragon: DragonsAPI) => {
+    deleteDragon(deletedDragon.id);
   };
 
   return (
@@ -37,6 +50,7 @@ const Home: React.FC = () => {
             onUpdate={getDragons}
             onSaveEdition={onSaveEdition}
             onSaveRegister={onSaveRegister}
+            onSaveDelete={onSaveDelete}
           />
         )}
       </div>

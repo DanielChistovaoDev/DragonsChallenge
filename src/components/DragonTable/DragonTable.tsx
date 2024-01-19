@@ -6,24 +6,30 @@ import ModalEdition from "../ModalEdition/ModalEdition";
 import { formatDateString } from "../../utils/date";
 import Button from "../Button/Button";
 import ModalRegister from "../ModalRegister/ModalRegister";
+import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
 
 interface DragonTableProps {
   dragons: DragonsAPI[];
   onUpdate: () => void;
   onSaveEdition: (editedDragon: DragonsAPI) => void;
   onSaveRegister: (createdDragon: DragonsAPI) => void;
+  onSaveDelete: (createdDragon: DragonsAPI) => void;
 }
 
 const DragonTable: React.FC<DragonTableProps> = ({
   dragons,
   onUpdate,
   onSaveEdition,
-  onSaveRegister
+  onSaveRegister,
+  onSaveDelete
 }) => {
   const [selectedDragonDetails, setSelectedDragonDetails] =
     useState<DragonsAPI | null>(null);
 
   const [selectedDragonEdition, setSelectedDragonEdition] =
+    useState<DragonsAPI | null>(null);
+
+  const [selectedDragonDelete, setSelectedDragonDelete] =
     useState<DragonsAPI | null>(null);
 
   const [isOpenRegisterModal, setIsOpenRegisterModal] = useState(false);
@@ -109,6 +115,12 @@ const DragonTable: React.FC<DragonTableProps> = ({
                   label="Edit"
                   onClick={() => setSelectedDragonEdition(dragon)}
                 />
+
+                <Button
+                  label="Delete"
+                  onClick={() => setSelectedDragonDelete(dragon)}
+                />
+
               </td>
             </tr>
           ))}
@@ -149,6 +161,13 @@ const DragonTable: React.FC<DragonTableProps> = ({
         isOpen={isOpenRegisterModal}
         onClose={() => setIsOpenRegisterModal(false)}
         onSave={(e) => onSaveRegister(e)}
+      />
+
+      <ModalConfirmation
+        dragon={selectedDragonDelete}
+        isOpen={!!selectedDragonDelete}
+        onClose={() => setSelectedDragonDelete(null)}
+        onSave={(e) => onSaveDelete(e)}
       />
     </>
   );
