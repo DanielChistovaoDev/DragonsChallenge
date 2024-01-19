@@ -13,7 +13,6 @@ import Home from "./pages/Home/Home";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store/store";
 import Layout from "./components/Layout/Layout";
-import useAuth from "./hooks/useAuth";
 
 function App() {
   const auth = useSelector((state: RootState) => state.auth);
@@ -24,8 +23,6 @@ function App() {
     element,
   }) => {
     const location = useLocation();
-
-    const { handleLogout } = useAuth();
 
     return isLoggedIn ? (
       React.cloneElement(element)

@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-// src/pages/Home.tsx
 import React, { useEffect } from "react";
 import "./Home.css";
 import DragonTable from "../../components/DragonTable/DragonTable";
