@@ -1,8 +1,8 @@
 import React from "react";
-import "./ModalRegister.css";
-import { DragonsAPI } from "../../types/DragonsAPI";
-import Button from "../Button/Button";
-import { convertDateToISOString, formatDateString, getNewDateAPIFormat } from "../../utils/date";
+import "../Modal.css";
+import { DragonsAPI } from "../../../types/DragonsAPI";
+import Button from "../../Button/Button";
+import { convertDateToISOString, formatDateString, getNewDateAPIFormat } from "../../../utils/date";
 
 interface ModalEditionProps {
   isOpen: boolean;

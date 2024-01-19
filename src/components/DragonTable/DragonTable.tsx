@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./DragonTable.css";
 import { DragonsAPI } from "../../types/DragonsAPI";
-import ModalDetails from "../ModalDetails/ModalDetails";
-import ModalEdition from "../ModalEdition/ModalEdition";
+import ModalDetails from "../Modal/ModalDetails/ModalDetails";
+import ModalEdition from "../Modal/ModalEdition/ModalEdition";
 import { formatDateString } from "../../utils/date";
 import Button from "../Button/Button";
-import ModalRegister from "../ModalRegister/ModalRegister";
-import ModalConfirmation from "../ModalConfirmation/ModalConfirmation";
+import ModalRegister from "../Modal/ModalRegister/ModalRegister";
+import ModalConfirmation from "../Modal/ModalConfirmation/ModalConfirmation";
 
 interface DragonTableProps {
   dragons: DragonsAPI[];

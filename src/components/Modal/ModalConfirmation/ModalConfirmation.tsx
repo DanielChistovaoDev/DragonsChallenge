@@ -1,7 +1,7 @@
 import React from "react";
-import "./ModalConfirmation.css";
-import { DragonsAPI } from "../../types/DragonsAPI";
-import Button from "../Button/Button";
+import "../Modal.css";
+import { DragonsAPI } from "../../../types/DragonsAPI";
+import Button from "../../Button/Button";
 
 interface ModalConfirmationProps {
   isOpen: boolean;
