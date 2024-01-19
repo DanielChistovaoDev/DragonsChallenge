@@ -2,7 +2,11 @@ import React from "react";
 import "../Modal.css";
 import { DragonsAPI } from "../../../types/DragonsAPI";
 import Button from "../../Button/Button";
-import { convertDateToISOString, formatDateString, getNewDateAPIFormat } from "../../../utils/date";
+import {
+  convertDateToISOString,
+  formatDateString,
+  getNewDateAPIFormat,
+} from "../../../utils/date";
 
 interface ModalEditionProps {
   isOpen: boolean;
@@ -16,15 +20,12 @@ const ModalRegister: React.FC<ModalEditionProps> = ({
   onSave,
 }) => {
   const [createdDragon, setCreatedDragon] = React.useState<DragonsAPI>({
-    createdAt: convertDateToISOString(
-        getNewDateAPIFormat()
-    ),
+    createdAt: convertDateToISOString(getNewDateAPIFormat()),
     histories: [],
-    name: '',
-    type: '',
-    id: ''
-});
-
+    name: "",
+    type: "",
+    id: "",
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!createdDragon) return;

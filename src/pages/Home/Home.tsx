@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     getDragons,
     editDragon,
     createDragon,
-    deleteDragon
+    deleteDragon,
   } = useDragons();
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
         {loading ? (
           <Loader />
         ) : error ? (
-          <ErrorLabel errorMessage="Erro ao carregar dragões"/>
+          <ErrorLabel errorMessage="Erro ao carregar dragões" />
         ) : (
           <DragonTable
             dragons={sortAlphabetically(dragons, "name")}

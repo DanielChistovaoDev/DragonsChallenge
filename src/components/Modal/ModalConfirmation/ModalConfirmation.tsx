@@ -16,7 +16,6 @@ const ModalConfirmation: React.FC<ModalConfirmationProps> = ({
   dragon,
   onSave,
 }) => {
-
   const handleDelete = () => {
     if (dragon) {
       onSave(dragon);
@@ -32,13 +31,9 @@ const ModalConfirmation: React.FC<ModalConfirmationProps> = ({
             {dragon && (
               <div className="form">
                 <h2>Alert</h2>
-                <label>
-                  Are you sure you want to delete this record?
-                </label>
+                <label>Are you sure you want to delete this record?</label>
 
-                <label>
-                  Dragon Name: {dragon.name}
-                </label>
+                <label>Dragon Name: {dragon.name}</label>
 
                 <div className="actions">
                   <Button label="Yes" onClick={handleDelete} />

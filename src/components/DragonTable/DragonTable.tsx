@@ -21,7 +21,7 @@ const DragonTable: React.FC<DragonTableProps> = ({
   onUpdate,
   onSaveEdition,
   onSaveRegister,
-  onSaveDelete
+  onSaveDelete,
 }) => {
   const [selectedDragonDetails, setSelectedDragonDetails] =
     useState<DragonsAPI | null>(null);
@@ -78,13 +78,10 @@ const DragonTable: React.FC<DragonTableProps> = ({
   return (
     <>
       <div className="table-top--actions">
-        <Button
-          label='Update'
-          onClick={() => onUpdate()}
-        />
+        <Button label="Update" onClick={() => onUpdate()} />
 
         <Button
-          label='New Dragon'
+          label="New Dragon"
           onClick={() => setIsOpenRegisterModal(true)}
         />
       </div>
@@ -120,7 +117,6 @@ const DragonTable: React.FC<DragonTableProps> = ({
                   label="Delete"
                   onClick={() => setSelectedDragonDelete(dragon)}
                 />
-
               </td>
             </tr>
           ))}
